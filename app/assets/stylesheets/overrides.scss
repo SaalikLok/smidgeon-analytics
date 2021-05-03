@@ -1,0 +1,32 @@
+$light: #FFFBF4;
+$alt-dark: #333;
+$dark: #20396B;
+$link: #3469d4;
+$family-primary: 'Rosario', sans-serif;
+
+body {
+  font-family: $family-primary;
+  color: $dark;
+  background-color: $light;
+}
+
+a {
+  color: $link;
+
+  &:hover{
+    color: $dark;
+  }
+}
+
+.navbar-item.subtitle {
+  color: $dark;
+  font-weight: bold;
+}
+
+.title {
+  color: $dark;
+}
+
+.main-container {
+  padding: 1.5em;
+}

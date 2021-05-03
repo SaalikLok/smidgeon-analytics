@@ -4,24 +4,42 @@
   <title>SmidgeonAnalytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css" integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA==" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rosario&family=Rubik:wght@500&display=swap" rel="stylesheet"> 
+  <script src="https://kit.fontawesome.com/492794bb7e.js" crossorigin="anonymous"></script>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   
-  <nav class="top-bar">
-    <h1><a href="/">SmidgeonAnalytics</a></h1>
-
-    <section class="top-bar-section">
-      <ul class="right">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item subtitle" href="/">
+        Smidgeon Analytics
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="mainNavbar" class="navbar-menu">
+      <div class="navbar-end">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <div class="navbar-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          </div>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <div class="navbar-item">
+            <%= link_to 'Sign Up', new_user_registration_path %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to 'Sign In', new_user_session_path %>
+          </div>
         <%- end -%>
-      </ul>
-    </section>
+        </div>
+      </div>
+    </div>
   </nav>
 
   <%- flash.each do |key, value| -%>
@@ -30,7 +48,9 @@
     </div>
   <%- end -%>
 
-  <%= yield %>
+  <div class="main-container">
+    <%= yield %>
+  </div>
 
   <%= javascript_include_tag 'application' %>
   
@@ -41,6 +61,16 @@
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
   
-  <%= yield :extra_footer %>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p> Made with <a href="https://saaliklok.com"> <i class="fas fa-rocket"></i> by Saalik Lokhandwala</a>, 2021 </p>
+      <span class="icon is-large">
+        <a href="https://twitter.com/SaalikLok"><i class="fab fa-twitter fa-lg"></i></a>
+      </span>
+      <span class="icon is-large">
+        <a href="https://github.com/SaalikLok/smidgeon-analytics"><i class="fab fa-github fa-lg"></i></a>
+      </span>
+    </span>
+  </footer>
 </body>
 </html>

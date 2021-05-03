@@ -1,17 +1,14 @@
 import React from 'react'
-import styled from '@emotion/styled'
-import {Box} from 'bloomer'
-
-const Para = styled.p`
-  color: green;
-`
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import LandingIndex from './landing/LandingIndex'
 
 export const App = (props) => {
   return (
-    <Box>
-      <h1 className="title">This is a Bulma Title</h1>
-      <Para>Hello World, from Emotion</Para>
-    </Box>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={LandingIndex}/>
+      </Switch>
+    </BrowserRouter>
   )
 }
 
