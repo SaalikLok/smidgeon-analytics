@@ -7,7 +7,6 @@ const fetchUserWebsites = async () => {
       throw(error)
     }
     const responseBody = await response.json()
-    debugger
     return responseBody.websites
   } catch (error) {
     console.error(`Error in fetch: ${error.message}`)

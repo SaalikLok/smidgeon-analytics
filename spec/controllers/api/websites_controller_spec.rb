@@ -19,4 +19,18 @@ describe Api::V1::WebsitesController, type: :controller do
       expect(returned_json["websites"][0]["user"]["email"]).to eq "someone@gmail.com"
     end
   end
+
+  describe "POST#create" do
+    it "should create a new website" do
+      post_json = {
+        title: "Website",
+        url: "https://somewebsite.com"
+      }
+      sign_in user
+
+      prev_count = Website.count
+      post(:create, params: post_json, format: :json)
+      expect(Website.count).to eq(prev_count + 1)
+    end
+  end
 end
