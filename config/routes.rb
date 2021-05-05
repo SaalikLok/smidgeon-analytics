@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/user' => "homes#authenticated", :as => :user_root
   get '/websites', to: 'homes#authenticated'
   get '/websites/new', to: 'homes#authenticated'
+  get '/websites/:id', to: 'homes#authenticated'
   
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :websites, only: [:index, :create]
+      resources :websites, only: [:index, :create, :show]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
