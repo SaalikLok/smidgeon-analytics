@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users
 
-  get '/websites', to: 'homes#index'
-  get '/websites/new', to: 'homes#index'
+  get '/user' => "homes#authenticated", :as => :user_root
+  get '/websites', to: 'homes#authenticated'
+  get '/websites/new', to: 'homes#authenticated'
   
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

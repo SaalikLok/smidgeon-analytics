@@ -1,6 +1,6 @@
 import { Button, Columns, Container, Title } from 'bloomer'
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import fetchUserWebsites from '../../data/fetchUserWebsites'
 import WebsiteTile from './WebsiteTile'
 
@@ -13,6 +13,11 @@ const Dashboard = () => {
       setWebsites(websiteData)
     })
   }, [])
+
+  if(!websites){
+    window.location.href = "/users/sign_in"
+    return null
+  }
 
   const websiteTiles = websites.map( website => {
     return <WebsiteTile key={website.id} title={website.title} />
