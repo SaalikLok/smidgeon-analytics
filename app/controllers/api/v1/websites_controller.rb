@@ -20,7 +20,7 @@ class Api::V1::WebsitesController < ApplicationController
 
   def show
     @website = Website.find(params[:id])
-    render json: @website
+    render json: @website, serializer: WebsiteShowSerializer
   end
 
   protected
