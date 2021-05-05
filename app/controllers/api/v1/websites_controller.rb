@@ -8,14 +8,19 @@ class Api::V1::WebsitesController < ApplicationController
   end
 
   def create
-    website = Website.new(website_params)
-    website.user = current_user
+    @website = Website.new(website_params)
+    @website.user = current_user
 
-    if website.save
-      render json: website
+    if @website.save
+      render json: @website
     else
-      render json: website.errors.full_messages.to_sentence
+      render json: @website.errors.full_messages.to_sentence
     end
+  end
+
+  def show
+    @website = Website.find(params[:id])
+    render json: @website
   end
 
   protected

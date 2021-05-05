@@ -33,4 +33,19 @@ describe Api::V1::WebsitesController, type: :controller do
       expect(Website.count).to eq(prev_count + 1)
     end
   end
+
+  describe "GET#show" do
+    it "should get the data of a single website" do
+      sign_in user
+
+      get :show, params: {id: website.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+      
+      expect(returned_json["website"]["title"]).to eq "My site"
+      expect(returned_json["website"]["url"]).to eq "https://mysite.com"
+    end
+  end
 end
