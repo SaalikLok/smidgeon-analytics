@@ -27,6 +27,9 @@
       <div class="navbar-end">
         <%- if current_user -%>
           <div class="navbar-item">
+            <%= link_to 'Dashboard', websites_path %>
+          </div>
+          <div class="navbar-item">
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </div>
         <%- else -%>

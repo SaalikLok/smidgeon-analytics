@@ -1,5 +1,5 @@
 class WebsiteSerializer < ActiveModel::Serializer
-  attributes :title, :url, :user
+  attributes :id, :title, :url, :user
 
   belongs_to :user
 end

@@ -2,6 +2,7 @@ import React from "react";
 import { Hero, HeroBody, Container, Columns, Column, Button } from "bloomer";
 import ParrotPic from '../../../../assets/images/parrot-captain.svg'
 import styled from '@emotion/styled'
+import { Link } from "react-router-dom";
 
 const ParrotImg = styled.img`
   max-width: 50%;
@@ -33,7 +34,7 @@ const LandingIndex = () => {
               <SiteTitle>Smidgeon Analytics</SiteTitle>
               <FrontPara>A small, dead-simple, and open source analytics tool that tracks page views on your website or blog.</FrontPara>
               <FrontPara>Include the script, and let ‘er rip.</FrontPara>
-              <Button isColor="info">Start Now</Button>
+              <Link to="/websites"><Button isColor="info">Start Now</Button></Link>
             </Container>
           </Column>
         </Columns>
