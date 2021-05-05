@@ -21,13 +21,7 @@ class Api::V1::WebsitesController < ApplicationController
   protected
 
   def website_params
-    params.require(:website).permit(:title, :url, :user)
-  end
-
-  def authorize_user
-    if !user_signed_in? || !(current_user.role == "admin")
-      render json: {error: ["Only admins have access to this feature"]}
-    end
+    params.permit(:title, :url)
   end
 
   def authenticate_user
