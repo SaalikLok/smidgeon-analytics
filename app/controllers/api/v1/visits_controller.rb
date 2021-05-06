@@ -1,11 +1,10 @@
-class VisitsController < ApplicationController
+class Api::V1::VisitsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     @visit = Visit.new(visit_params)
-
-    binding.pry
-
-    # find correct website by matching the domain name of the full path use pry for finding params
-    @visit.website = Website.find(1)
+    origin_website = params[:origin]
+    @visit.website = Website.find_by url: origin_website
 
     if @visit.save
       render json: @visit
@@ -17,7 +16,6 @@ class VisitsController < ApplicationController
   protected
 
   def visit_params
-    binding.pry
-    params.permit()
+    params.permit(:path_visited, :referring_url)
   end
 end
