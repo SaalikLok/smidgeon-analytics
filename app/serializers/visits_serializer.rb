@@ -1,5 +1,5 @@
 class VisitsSerializer < ActiveModel::Serializer
-  attributes :id, :path_visited, :referring_url
+  attributes :path_visited, :referring_url, :created_at
 
   belongs_to :website
 end

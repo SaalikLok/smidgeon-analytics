@@ -2,6 +2,7 @@ import { Title } from "bloomer"
 import React, { useEffect, useState } from "react"
 import fetchWebsite from "../../data/fetchWebsite"
 import InstallSnippet from "./InstallSnippet"
+import VisitChart from "./VisitChart"
 
 const WebsiteShow = props => {
 	const [website, setWebsite] = useState({})
@@ -22,7 +23,7 @@ const WebsiteShow = props => {
 		<div>
 			<Title>{website.title}</Title>
 			<a href={website.url}>{website.url}</a>
-			{installed ? <div>chart</div> : <InstallSnippet />}
+			{installed ? <VisitChart rawData={website.visits} /> : <InstallSnippet />}
 		</div>
 	)
 }
