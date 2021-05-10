@@ -24,3 +24,31 @@ export const parseChartData = rawData => {
 
 	return Object.values(tempChartData)
 }
+
+export const parseReferralData = rawData => {
+  let tempReferralData = {}
+	for (let { referring_url } of rawData) {
+		tempReferralData[referring_url] = {
+			referring_url,
+			visits: tempReferralData[referring_url]
+				? tempReferralData[referring_url].visits + 1
+				: 1,
+		}
+	}
+
+	return Object.values(tempReferralData)
+}
+
+export const parsePathData = rawData => {
+  let tempPathData = {}
+	for (let { path_visited } of rawData) {
+		tempPathData[path_visited] = {
+			path_visited,
+			visits: tempPathData[path_visited]
+				? tempPathData[path_visited].visits + 1
+				: 1,
+		}
+	}
+
+	return Object.values(tempPathData)
+}
