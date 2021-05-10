@@ -1,8 +1,13 @@
+import styled from "@emotion/styled"
 import { Button, Columns, Container, Title } from "bloomer"
 import React, { useState, useEffect } from "react"
-import { Link, Redirect } from "react-router-dom"
+import { Link } from "react-router-dom"
 import fetchUserWebsites from "../../data/fetchUserWebsites"
 import WebsiteTile from "./WebsiteTile"
+
+const CenteredButton = styled.div`
+	text-align: center;
+`
 
 const Dashboard = () => {
 	const [websites, setWebsites] = useState([])
@@ -30,9 +35,11 @@ const Dashboard = () => {
 				<i className="fas fa-palette"></i> My Websites
 			</Title>
 			<Columns isMultiline>{websiteTiles}</Columns>
-			<Link to="/websites/new">
-				<Button isColor="info">Add a Website</Button>
-			</Link>
+			<CenteredButton>
+				<Link to="/websites/new">
+					<Button isColor="info">Add a Website</Button>
+				</Link>
+			</CenteredButton>
 		</Container>
 	)
 }
