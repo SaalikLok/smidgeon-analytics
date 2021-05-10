@@ -1,8 +1,14 @@
-import { Title } from "bloomer"
 import React, { useEffect, useState } from "react"
+import styled from "@emotion/styled"
+import { Title } from "bloomer"
 import fetchWebsite from "../../data/fetchWebsite"
 import InstallSnippet from "./InstallSnippet"
-import VisitChart from "./VisitChart"
+import WebsiteDataCharts from "./WebsiteDataCharts"
+
+const WebsiteShowContainer = styled.div`
+	margin: auto;
+	width: 80%;
+`
 
 const WebsiteShow = props => {
 	const [website, setWebsite] = useState({})
@@ -20,11 +26,11 @@ const WebsiteShow = props => {
 	}, [])
 
 	return (
-		<div>
+		<WebsiteShowContainer>
 			<Title>{website.title}</Title>
 			<a href={website.url}>{website.url}</a>
-			{installed ? <VisitChart rawData={website.visits} /> : <InstallSnippet />}
-		</div>
+			{installed ? <WebsiteDataCharts visitsData={website.visits} /> : <InstallSnippet />}
+		</WebsiteShowContainer>
 	)
 }
 
