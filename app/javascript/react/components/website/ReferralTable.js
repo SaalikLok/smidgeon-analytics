@@ -6,10 +6,8 @@ const ReferralTable = props => {
 
 	const tableRows = data.map(row => {
 		let referring_url
-		if (row.referring_url === null) {
+		if (row.referring_url === null || row.referring_url === "") {
 			referring_url = "direct"
-		} else if (row.referring_url === "") {
-			referring_url = "/"
 		} else {
 			referring_url = row.referring_url
 		}

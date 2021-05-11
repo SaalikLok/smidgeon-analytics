@@ -1,20 +1,36 @@
 import React, { useState } from "react"
-import { Button, Control, Field, Help, Input, Label, Title } from "bloomer"
+import {
+	Button,
+	Control,
+	Field,
+	Help,
+	Input,
+	Label,
+	Title,
+	Notification,
+} from "bloomer"
 import { Formik } from "formik"
 import postNewWebsite from "../../data/postNewWebsite"
+import _ from "lodash"
 
 const NewWebsiteForm = () => {
+	const [backendError, setBackendError] = useState(null)
+
 	const isURL = str => {
 		const pattern = new RegExp(
-			"^(https?:\\/\\/)?" +
-				"((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-				"((\\d{1,3}\\.){3}\\d{1,3}))" +
-				"(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-				"(\\?[;&a-z\\d%_.~+=-]*)?" +
-				"(\\#[-a-z\\d_]*)?$",
-			"i"
+			"^(?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?(?:.[0-9A-Za-z](?:(?:[0-9A-Za-z]|-){0,61}[0-9A-Za-z])?)*.?$"
 		)
 		return !!pattern.test(str)
+	}
+
+	const cleanUpURL = url => {
+		url = url.toLowerCase()
+		url = _.trim(url)
+		if (_.endsWith(url, "/")) {
+			url = url.slice(0, -1)
+		}
+
+		return url
 	}
 
 	const formValidation = values => {
@@ -25,14 +41,22 @@ const NewWebsiteForm = () => {
 		if (!values.url) {
 			errors.url = "A url is required!"
 		} else if (!isURL(values.url)) {
-			errors.url = "Enter a full, valid url!"
+			errors.url = "Enter the url host of your website, like 'test.com'"
 		}
 
 		return errors
 	}
 
+	let errorOnSubmit
+	if (backendError) {
+		errorOnSubmit = <Notification isColor="danger">{backendError}</Notification>
+	} else {
+		errorOnSubmit = null
+	}
+
 	return (
 		<div>
+			{errorOnSubmit}
 			<Title>
 				<i className="fas fa-feather"></i> Add a New Website
 			</Title>
@@ -40,9 +64,18 @@ const NewWebsiteForm = () => {
 				initialValues={{ title: "", url: "" }}
 				validate={formValidation}
 				onSubmit={(values, { setSubmitting }) => {
-				  const newSite = postNewWebsite(values)
-          console.log(newSite)
-					setSubmitting(false)
+					values.url = cleanUpURL(values.url)
+					debugger
+					postNewWebsite(values).then(newSite => {
+						if (!newSite.errors) {
+							setSubmitting(false)
+							setBackendError(null)
+							window.location.href = "/websites"
+						} else {
+							setSubmitting(false)
+							setBackendError(newSite.errors.url)
+						}
+					})
 				}}
 			>
 				{({
@@ -60,7 +93,7 @@ const NewWebsiteForm = () => {
 								<Input
 									name="title"
 									type="text"
-									placeholder="Your website's title"
+									placeholder="My website's title"
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.title}
@@ -72,12 +105,12 @@ const NewWebsiteForm = () => {
 						</Field>
 
 						<Field>
-							<Label>URL</Label>
+							<Label>Website</Label>
 							<Control>
 								<Input
 									name="url"
 									type="text"
-									placeholder="Enter a valid https:// address"
+									placeholder="mysite.com"
 									onChange={handleChange}
 									onBlur={handleBlur}
 									value={values.url}
