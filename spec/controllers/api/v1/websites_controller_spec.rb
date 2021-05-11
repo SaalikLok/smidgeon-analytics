@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe Api::V1::WebsitesController, type: :controller do
-  let!(:user) { User.create(email: "someone@gmail.com", password: "123456") }
-  let!(:website) { Website.create(title: "My site", url: "https://mysite.com", user: user) }
+  let!(:user) { User.create!(email: "someone@gmail.com", password: "123456", password_confirmation: "123456") }
+  let!(:website) { Website.create(title: "My site", url: "mysite.com", user: user) }
 
   describe "GET#index" do
     it "should get all websites of the currently signed in user" do
@@ -15,7 +15,7 @@ describe Api::V1::WebsitesController, type: :controller do
       expect(response.content_type).to eq("application/json")
 
       expect(returned_json["websites"][0]["title"]).to eq "My site"
-      expect(returned_json["websites"][0]["url"]).to eq "https://mysite.com"
+      expect(returned_json["websites"][0]["url"]).to eq "mysite.com"
       expect(returned_json["websites"][0]["user"]["email"]).to eq "someone@gmail.com"
     end
   end
@@ -24,7 +24,7 @@ describe Api::V1::WebsitesController, type: :controller do
     it "should create a new website" do
       post_json = {
         title: "Website",
-        url: "https://somewebsite.com"
+        url: "somewebsite.com"
       }
       sign_in user
 
@@ -45,7 +45,7 @@ describe Api::V1::WebsitesController, type: :controller do
       expect(response.content_type).to eq("application/json")
       
       expect(returned_json["website"]["title"]).to eq "My site"
-      expect(returned_json["website"]["url"]).to eq "https://mysite.com"
+      expect(returned_json["website"]["url"]).to eq "mysite.com"
     end
   end
 end
