@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/websites/:id', to: 'homes#authenticated'
   
   devise_scope :user do
+    root 'homes#index'
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 

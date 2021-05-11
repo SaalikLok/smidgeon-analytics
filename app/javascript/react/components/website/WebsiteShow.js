@@ -28,8 +28,14 @@ const WebsiteShow = props => {
 	return (
 		<WebsiteShowContainer>
 			<Title>{website.title}</Title>
-			<a href={website.url}>{website.url}</a>
-			{installed ? <WebsiteDataCharts visitsData={website.visits} /> : <InstallSnippet />}
+			<a target="blank" href={`https://${website.url}`}>
+				{website.url}
+			</a>
+			{installed ? (
+				<WebsiteDataCharts visitsData={website.visits} />
+			) : (
+				<InstallSnippet />
+			)}
 		</WebsiteShowContainer>
 	)
 }

@@ -35,7 +35,7 @@ const LandingIndex = () => {
               <SiteTitle className="is-size-2">Smidgeon Analytics</SiteTitle>
               <FrontPara>A small, dead-simple, and open source analytics tool that tracks page views on your website or blog.</FrontPara>
               <FrontPara>Include the script, and let ‘er rip.</FrontPara>
-              <Link to="/websites"><Button isColor="info">Start Now</Button></Link>
+              <a href="/users/sign_in"><Button isColor="info">Start Now</Button></a>
             </Container>
           </Column>
         </Columns>

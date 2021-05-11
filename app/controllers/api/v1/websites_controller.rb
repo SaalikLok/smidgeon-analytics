@@ -14,7 +14,7 @@ class Api::V1::WebsitesController < ApplicationController
     if @website.save
       render json: @website
     else
-      render json: @website.errors.full_messages.to_sentence
+      render json: { errors: @website.errors.to_hash(true) }, status: :unprocessable_entity
     end
   end
 
