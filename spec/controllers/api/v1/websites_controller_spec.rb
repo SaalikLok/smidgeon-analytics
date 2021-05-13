@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe Api::V1::WebsitesController, type: :controller do
   let!(:user) { User.create!(email: "someone@gmail.com", password: "123456", password_confirmation: "123456") }
-  let!(:website) { Website.create(title: "My site", url: "mysite.com", user: user) }
+  let!(:website) { Website.create!(title: "My site", url: "mysite.com", user: user) }
 
   describe "GET#index" do
     it "should get all websites of the currently signed in user" do
@@ -31,6 +31,21 @@ describe Api::V1::WebsitesController, type: :controller do
       prev_count = Website.count
       post(:create, params: post_json, format: :json)
       expect(Website.count).to eq(prev_count + 1)
+    end
+
+    it "should return website data" do
+      post_json = {
+        title: "Website",
+        url: "somewebsite.com"
+      }
+      sign_in user
+
+      post(:create, params: post_json, format: :json)
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["website"]["title"]).to eq("Website")
+      expect(returned_json["website"]["url"]).to eq("somewebsite.com")
+      expect(returned_json["website"]["user"]["id"]).to eq(user.id)
     end
   end
 
