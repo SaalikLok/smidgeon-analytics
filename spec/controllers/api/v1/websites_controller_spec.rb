@@ -3,6 +3,7 @@ require "rails_helper"
 describe Api::V1::WebsitesController, type: :controller do
   let!(:user) { User.create!(email: "someone@gmail.com", password: "123456", password_confirmation: "123456") }
   let!(:website) { Website.create!(title: "My site", url: "mysite.com", user: user) }
+  let!(:visit) { Visit.create!(path_visited: "/", referring_url: "https://twitter.com", website: website) }
 
   describe "GET#index" do
     it "should get all websites of the currently signed in user" do
@@ -61,6 +62,38 @@ describe Api::V1::WebsitesController, type: :controller do
       
       expect(returned_json["website"]["title"]).to eq "My site"
       expect(returned_json["website"]["url"]).to eq "mysite.com"
+    end
+  end
+
+  describe "DELETE#destroy" do
+    it "should delete a website from the db and return the deleted website" do
+      sign_in user
+
+      delete :destroy, params: {id: website.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(Website.count).to eq 0
+    end
+
+    it "should return the deleted website" do
+      sign_in user
+
+      delete :destroy, params: {id: website.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(returned_json["website"]["title"]).to eq website.title
+    end
+
+    it "should delete a website's associated visits" do
+      sign_in user
+
+      delete :destroy, params: {id: website.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(website.visits.count).to eq 0
     end
   end
 end

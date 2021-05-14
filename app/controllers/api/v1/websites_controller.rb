@@ -23,6 +23,13 @@ class Api::V1::WebsitesController < ApplicationController
     render json: @website, serializer: WebsiteShowSerializer
   end
 
+  def destroy
+    @website = Website.find(params[:id])
+    @website.destroy
+    
+    render json: @website
+  end
+
   protected
 
   def website_params

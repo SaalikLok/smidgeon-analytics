@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :visits, only: [:create]
-      resources :websites, only: [:index, :create, :show]
+      resources :websites, only: [:index, :create, :show, :destroy]
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
