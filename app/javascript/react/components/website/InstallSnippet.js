@@ -8,7 +8,7 @@ const CodeBlock = styled.pre`
 
 const InstallSnippet = () => {
   const snippetCode = String.raw`
-    <script src="https://cdn.jsdelivr.net/gh/saaliklok/smidgeon-analytics/@latest/snippet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/saaliklok/smidgeon-analytics@latest/snippet.min.js"></script>
   `
 
   const snippetCodeFull = String.raw`
