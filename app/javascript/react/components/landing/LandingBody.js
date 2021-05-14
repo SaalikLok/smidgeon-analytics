@@ -53,9 +53,11 @@ const LandingBody = () => {
 					<h3 className="is-size-5">What does this cost?</h3>
 					<p>
 						For now, Smidgeon is 100% free! It should handle traffic from small
-						sites well. If you’re encoutering any performance issues, know that
-						the project is also open source, so if you’re technical, feel free
-						to host your own implementation of Smidgeon, if you like.
+						sites well. Note that this instance is using a free or hobby Heroku
+						instance, so this free-to-use hosted version isn't as performant for
+						websites that get a high volume of traffic. Since the project is
+						open source, feel free to host your own implementation of Smidgeon
+						and remix it to your heart's content!
 					</p>
 				</div>
 			</QuestionDiv>
