@@ -4,7 +4,7 @@
 A small, dead-simple, and open source analytics tool that tracks page views on your website or blog.
 
 ## Using the App
-A hosted version of Smidgeon is available for you to use! Simply use the link in this repository.
+A hosted version of Smidgeon is available for you to use! Simply use the link in this repository. Note that it's using a free or hobby Heroku instance, so this free-to-use hosted version isn't as performant for websites that get a high volume of traffic.
 
 If you're a developer, and want to run Smidgeon locally or create your own instance of it, read on.
 
@@ -29,8 +29,9 @@ To get Smidgeon running locally on your machine:
 
 
 ## Future Features
-[] Advanced data visualizations for referring urls and paths visited
-[] Granular time-based filtering
+
+- Advanced data visualizations for referring urls and paths visited
+- Granular time-based filtering
 
 ## Contributing
 If you'd like to contribute to Smidgeon Analytics, feel free to clone the repository (see Running Locally for detailed setup), make changes, and create a pull request!
