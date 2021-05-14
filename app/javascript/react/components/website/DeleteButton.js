@@ -10,8 +10,8 @@ const DeleteIcon = styled.i`
 	margin: 0 0.3em;
 `
 
-const DeleteButton = (props) => {
-  const { deleteThisWebsite, website } = props
+const DeleteButton = props => {
+	const { deleteThisWebsite, website } = props
 
 	return (
 		<ButtonDiv>

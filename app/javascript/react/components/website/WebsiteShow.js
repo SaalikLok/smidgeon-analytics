@@ -27,10 +27,12 @@ const WebsiteShow = props => {
 		})
 	}, [])
 
-	const deleteThisWebsite = (websiteData) => {
-		let confirmation = confirm(`Are you sure you want to delete ${website.title}? The website and all visit data will be permanently erased. This action is irreversible.`)
-		
-		if(confirmation){
+	const deleteThisWebsite = websiteData => {
+		let confirmation = confirm(
+			`Are you sure you want to delete ${website.title}? The website and all visit data will be permanently erased. This action is irreversible.`
+		)
+
+		if (confirmation) {
 			deleteWebsite(websiteData).then(deletedWebsite => {
 				alert(`${deletedWebsite.title} has been deleted.`)
 				props.history.push("/websites")
@@ -49,7 +51,7 @@ const WebsiteShow = props => {
 			) : (
 				<InstallSnippet />
 			)}
-			<DeleteButton deleteThisWebsite={deleteThisWebsite} website={website}/>
+			<DeleteButton deleteThisWebsite={deleteThisWebsite} website={website} />
 		</WebsiteShowContainer>
 	)
 }

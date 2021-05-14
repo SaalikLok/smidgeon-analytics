@@ -1,5 +1,5 @@
-const deleteWebsite = async (deletePayload) => {
-  try {
+const deleteWebsite = async deletePayload => {
+	try {
 		const response = await fetch(`/api/v1/websites/${deletePayload.id}`, {
 			credentials: "same-origin",
 			method: "DELETE",
