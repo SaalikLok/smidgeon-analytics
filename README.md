@@ -8,6 +8,12 @@ A hosted version of Smidgeon is available for you to use! Simply use the link in
 
 If you're a developer, and want to run Smidgeon locally or create your own instance of it, read on.
 
+### Demo Credentials
+To get a sense of the site, try a demo, and look at seed data, use these login credentials:
+
+- username: `testing@gmail.com`
+- password: `123456`
+
 ## Running Locally
 To get Smidgeon running locally on your machine:
 
