@@ -1,25 +1,18 @@
-[![Codeship Status for SaalikLok/smidgeon-analytics](https://app.codeship.com/projects/ba7db401-22c9-477a-9297-faabe91164ce/status?branch=main)](https://app.codeship.com/projects/443342)
+Heads up: This project is not actively developed or maintained.
 
 # Smidgeon Analytics 🦜
 A small, dead-simple, and open source analytics tool that tracks page views on your website or blog.
+Originally written as my bootcamp breakable toy.
 
-## Using the App
-A hosted version of Smidgeon is available for you to use! Simply use the link in this repository. Note that it's using a free or hobby Heroku instance, so this free-to-use hosted version isn't as performant for websites that get a high volume of traffic.
-
-If you're a developer, and want to run Smidgeon locally or create your own instance of it, read on.
-
-### Demo Credentials
-To get a sense of the site, try a demo, and look at seed data, use these login credentials:
-
-- username: `testing@gmail.com`
-- password: `123456`
+Feel free to check out the code or self-host it if you like.
 
 ## Running Locally
 To get Smidgeon running locally on your machine:
 
-**Have These Installed**
-- Ruby v2.7.3
-- Ruby on Rails
+**Uses**
+
+- Ruby 2.7.3
+- Rails 5
 - PostgreSQL
 - NodeJS
 
@@ -33,14 +26,3 @@ To get Smidgeon running locally on your machine:
 6. Start the webpack dev server: `yarn start`
 7. Navigate to `localhost:3000` to see the app running
 
-
-## Future Features
-
-- Advanced data visualizations for referring urls and paths visited
-- Granular time-based filtering
-
-## Contributing
-If you'd like to contribute to Smidgeon Analytics, feel free to clone the repository (see Running Locally for detailed setup), make changes, and create a pull request!
-
-
-MIT Licensed.
