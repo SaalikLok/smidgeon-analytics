@@ -1,5 +1,4 @@
 import React from "react"
-import { Container } from "bloomer"
 import screenshot from "../../../../assets/images/screenshot.png"
 import styled from "@emotion/styled"
 
@@ -47,17 +46,6 @@ const LandingBody = () => {
 						Smidgeon Analytics was <a href="https://saaliklok.com">Saalik's</a>{" "}
 						capstone project during his time at Launch Academy. It's built with
 						React, Ruby on Rails, and a whole lot of fun.
-					</p>
-				</div>
-				<div>
-					<h3 className="is-size-5">What does this cost?</h3>
-					<p>
-						For now, Smidgeon is 100% free! It should handle traffic from small
-						sites well. Note that this instance is using a free or hobby Heroku
-						instance, so this free-to-use hosted version isn't as performant for
-						websites that get a high volume of traffic. Since the project is
-						open source, feel free to host your own implementation of Smidgeon
-						and remix it to your heart's content!
 					</p>
 				</div>
 			</QuestionDiv>
